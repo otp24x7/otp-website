@@ -6,27 +6,35 @@ import StepCard from '@/components/ui/StepCard'
 export default function HowItWorks() {
   const sectionStyle = {
     padding: '120px 0',
-    background: 'linear-gradient(135deg, #f8f9fa 0%, #e9f5f0 100%)',
-    position: 'relative'
+    position: 'relative',
+    overflow: 'hidden',
+    background: 'linear-gradient(135deg, #0f4c81 0%, #00a86b 100%)',
+  }
+
+  const bubbleStyle = {
+    position: 'absolute',
+    inset: 0,
+    background:
+      'radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px)',
+    backgroundSize: '40px 40px',
+    animation: 'moveGrid 30s linear infinite',
+    zIndex: 0,
   }
 
   const titleStyle = {
     textAlign: 'center',
     fontSize: '48px',
     marginBottom: '20px',
-    background: 'linear-gradient(135deg, #0f4c81, #00a86b)',
-    WebkitBackgroundClip: 'text',
-    WebkitTextFillColor: 'transparent',
-    backgroundClip: 'text',
-    animation: 'fadeIn 1s ease'
+    color: '#ffffff',
+    animation: 'fadeInUp 1s ease',
   }
 
   const subtitleStyle = {
     textAlign: 'center',
     fontSize: '18px',
-    color: '#666',
     marginBottom: '60px',
-    animation: 'fadeIn 1.2s ease'
+    color: 'rgba(255,255,255,0.85)',
+    animation: 'fadeInUp 1.2s ease',
   }
 
   const gridStyle = {
@@ -34,31 +42,43 @@ export default function HowItWorks() {
     gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
     gap: '50px',
     marginTop: '60px',
-    position: 'relative'
+    position: 'relative',
+    zIndex: 1,
   }
 
   return (
     <section style={sectionStyle} id="how-it-works">
-      <div className="container">
-        <h2 style={titleStyle}>
-          How It Works
-        </h2>
-        <p style={subtitleStyle}>
-          Simple, fast, and efficient
-        </p>
-        
+      {/* White bubbles */}
+      <div style={bubbleStyle} />
+
+      <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+        <h2 style={titleStyle}>How It Works</h2>
+        <p style={subtitleStyle}>Simple, fast, and efficient</p>
+
         <div style={gridStyle}>
           {steps.map((step, idx) => (
-            <StepCard 
-              key={idx} 
-              number={step.number} 
-              title={step.title} 
-              desc={step.desc} 
-              delay={idx * 0.2} 
+            <StepCard
+              key={idx}
+              number={step.number}
+              title={step.title}
+              desc={step.desc}
+              delay={idx * 0.2}
+              theme="dark"
             />
           ))}
         </div>
       </div>
+
+      <style jsx>{`
+        @keyframes moveGrid {
+          from {
+            transform: translate(0, 0);
+          }
+          to {
+            transform: translate(-40px, -40px);
+          }
+        }
+      `}</style>
     </section>
   )
 }

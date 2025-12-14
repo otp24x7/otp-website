@@ -6,6 +6,7 @@ import Image from 'next/image'
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [logoRotate, setLogoRotate] = useState(false)
+  const baseLogoScale = 1.6
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,8 +40,11 @@ export default function Header() {
   const logoContainerStyle = {
     display: 'flex',
     alignItems: 'center',
-    gap: '15px',
+    gap: '12px',
     fontSize: '28px',
+    width: '60px',
+    minWidth: '60px',
+    overflow: 'visible',
     fontWeight: 'bold',
     animation: 'slideInLeft 0.8s ease-out'
   }
@@ -51,7 +55,9 @@ export default function Header() {
     filter: 'drop-shadow(0 4px 8px rgba(0, 168, 107, 0.3))',
     transition: 'transform 0.7s ease',
     cursor: 'pointer',
-    transform: logoRotate ? 'rotate(360deg) scale(1.1)' : 'rotate(0deg) scale(1)'
+    transform: logoRotate
+      ? `rotate(360deg) scale(${baseLogoScale * 1.05})`
+      : `rotate(0deg) scale(${baseLogoScale})`
   }
 
   const navLinksStyle = {
@@ -85,23 +91,41 @@ export default function Header() {
     <>
       <header style={headerStyle}>
         <nav className="container" style={navStyle}>
-          <div style={logoContainerStyle}>
-        <Image
-            src="/logo.jpeg"
-            alt="OTP Logo"
-            width={60}
-            height={60}
-            style={logoStyle}
-            onMouseEnter={() => setLogoRotate(true)}
-            onMouseLeave={() => setLogoRotate(false)}
-            priority
-        />
+          <div style={logoContainerStyle} className="logo-container">
+            <Image
+              src="/otp_1.png"
+              alt="OTP Logo"
+              width={60}
+              height={60}
+              className="logo-img"
+              style={logoStyle}
+              onMouseEnter={() => setLogoRotate(true)}
+              onMouseLeave={() => setLogoRotate(false)}
+              priority
+            />
+
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                lineHeight: '1.05',
+                fontSize: '14px',
+                fontWeight: 700,
+                color: '#0f4c81',
+                whiteSpace: 'nowrap',
+              }}
+            >
+              <span>ONE</span>
+              <span>TESTING</span>
+              <span>POINT</span>
+            </div>
           </div>
-          
+
+
           <ul className="nav-links" style={navLinksStyle}>
             {navItems.map((item) => (
               <li key={item}>
-                <a 
+                <a
                   href={`#${item.toLowerCase().replace(/\s+/g, '-')}`}
                   style={navLinkStyle}
                   className="nav-link"
@@ -139,6 +163,17 @@ export default function Header() {
           .nav-links {
             display: none;
           }
+          /* keep logo from scaling too large on small screens */
+          .logo-img {
+            transform: none !important;
+          }
+          .logo-container {
+            width: 48px !important;
+            min-width: 48px !important;
+          }
+        }
+        .logo-container {
+          overflow: visible;
         }
       `}</style>
     </>

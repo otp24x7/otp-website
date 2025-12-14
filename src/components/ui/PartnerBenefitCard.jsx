@@ -6,63 +6,46 @@ export default function PartnerBenefitCard({ icon, title, desc }) {
   const [isHovered, setIsHovered] = useState(false)
 
   const cardStyle = {
-    background: 'white',
-    padding: '35px',
-    borderRadius: '18px',
-    textAlign: 'left',
+    background: 'rgba(255,255,255,0.08)',
+    padding: '36px',
+    borderRadius: '20px',
+    backdropFilter: 'blur(16px)',
+    WebkitBackdropFilter: 'blur(16px)',
+    border: '1px solid rgba(255,255,255,0.2)',
     boxShadow: isHovered
-      ? '0 18px 50px rgba(0, 168, 107, 0.18)'
-      : '0 10px 35px rgba(0, 0, 0, 0.08)',
+      ? '0 18px 50px rgba(255,255,255,0.35)'
+      : '0 10px 30px rgba(0,0,0,0.4)',
     transform: isHovered ? 'translateY(-10px)' : 'translateY(0)',
-    transition: 'all 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.15)',
-    position: 'relative',
-    overflow: 'hidden',
-    border: '1px solid rgba(0, 168, 107, 0.12)',
-    cursor: 'pointer'
-  }
-
-  const leftBorderStyle = {
-    position: 'absolute',
-    left: 0,
-    top: 0,
-    height: '100%',
-    width: '5px',
-    background: 'linear-gradient(180deg, #0f4c81, #00a86b)',
-    transform: isHovered ? 'scaleY(1)' : 'scaleY(0)',
-    transformOrigin: 'top',
-    transition: 'transform 0.4s ease'
+    transition: 'all 0.4s ease',
+    cursor: 'pointer',
   }
 
   const iconStyle = {
     fontSize: '42px',
-    marginBottom: '20px',
-    color: '#00a86b',
+    marginBottom: '18px',
     transform: isHovered ? 'scale(1.15)' : 'scale(1)',
-    transition: 'transform 0.4s ease'
+    transition: 'transform 0.3s ease',
   }
 
   const h3Style = {
     fontSize: '22px',
     marginBottom: '12px',
-    color: '#0f4c81'
+    color: '#ffffff',
   }
 
   const pStyle = {
-    color: '#666',
+    color: 'rgba(255,255,255,0.85)',
     lineHeight: 1.7,
-    fontSize: '15px'
+    fontSize: '15px',
   }
 
   return (
     <div
+      style={cardStyle}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      style={cardStyle}
     >
-      <div style={leftBorderStyle} />
-
       {icon && <div style={iconStyle}>{icon}</div>}
-
       <h3 style={h3Style}>{title}</h3>
       <p style={pStyle}>{desc}</p>
     </div>

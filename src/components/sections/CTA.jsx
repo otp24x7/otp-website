@@ -54,7 +54,7 @@ export default function CTA() {
             Compare prices, book instantly, and save on medical tests — available 24x7
           </p>
           <a href="#tests" style={buttonStyle} className="cta-button">
-            Get Started Now
+            Coming Soon
           </a>
         </div>
       </section>
