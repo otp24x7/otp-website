@@ -1,4 +1,4 @@
-# OTP Medical Platform - Next.js
+# OTP Medical Platform Website - Next.js
 
 A modern medical test booking platform built with Next.js 14.
 
