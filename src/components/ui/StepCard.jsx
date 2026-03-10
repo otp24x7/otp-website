@@ -48,11 +48,11 @@ export default function StepCard({ number, title, desc, delay }) {
   const h3Style = {
     fontSize: '22px',
     marginBottom: '12px',
-    color: '#ffffff',
+    color: '#0f4c81',
   }
 
   const pStyle = {
-    color: 'rgba(255, 255, 255, 0.85)',
+    color: '#00a86b',
     lineHeight: 1.6,
     maxWidth: '280px',
     margin: '0 auto',

@@ -8,6 +8,7 @@ import Tests from "@/components/sections/Tests";
 import CTA from "@/components/sections/CTA";
 import FloatingShapes from "@/components/effects/FloatingShapes";
 import PartnerWithUs from "@/components/sections/PartnerWithUs";
+import PartnersSection from "@/components/sections/Partners";
 
 export default function Home() {
   return (
@@ -16,12 +17,13 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
+        <PartnersSection />
         {/* <Stats /> */}
         <Features />
         <HowItWorks />
         <Tests />
         <PartnerWithUs />
-        <CTA />
+        {/* <CTA /> */}
       </main>
       <Footer />
     </>

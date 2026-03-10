@@ -30,11 +30,11 @@ export default function PartnerBenefitCard({ icon, title, desc }) {
   const h3Style = {
     fontSize: '22px',
     marginBottom: '12px',
-    color: '#ffffff',
+    color: '#0f4c81',
   }
 
   const pStyle = {
-    color: 'rgba(255,255,255,0.85)',
+    color: '#00a86b',
     lineHeight: 1.7,
     fontSize: '15px',
   }

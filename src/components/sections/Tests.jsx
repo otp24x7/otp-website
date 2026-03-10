@@ -6,16 +6,16 @@ import TestCard from '@/components/ui/TestCard'
 export default function Tests() {
   const sectionStyle = {
     padding: '120px 0',
-    background: 'white'
+    position: 'relative',
+    overflow: 'hidden',
+    background: 'linear-gradient(135deg, #0f4c81 0%, #00a86b 100%)',
   }
 
   const titleStyle = {
+    color: 'white',
     textAlign: 'center',
     fontSize: '48px',
     marginBottom: '20px',
-    background: 'linear-gradient(135deg, #0f4c81, #00a86b)',
-    WebkitBackgroundClip: 'text',
-    WebkitTextFillColor: 'transparent',
     backgroundClip: 'text',
     animation: 'fadeIn 1s ease'
   }
@@ -23,7 +23,7 @@ export default function Tests() {
   const subtitleStyle = {
     textAlign: 'center',
     fontSize: '18px',
-    color: '#666',
+    color: 'white',
     marginBottom: '60px',
     animation: 'fadeIn 1.2s ease'
   }

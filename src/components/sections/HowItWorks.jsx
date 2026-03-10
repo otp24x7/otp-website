@@ -6,9 +6,8 @@ import StepCard from '@/components/ui/StepCard'
 export default function HowItWorks() {
   const sectionStyle = {
     padding: '120px 0',
-    position: 'relative',
-    overflow: 'hidden',
-    background: 'linear-gradient(135deg, #0f4c81 0%, #00a86b 100%)',
+    background: 'white',
+    position: 'relative'
   }
 
   const bubbleStyle = {
@@ -25,7 +24,10 @@ export default function HowItWorks() {
     textAlign: 'center',
     fontSize: '48px',
     marginBottom: '20px',
-    color: '#ffffff',
+    background: 'linear-gradient(135deg, #0f4c81, #00a86b)',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+    backgroundClip: 'text',
     animation: 'fadeInUp 1s ease',
   }
 
@@ -33,7 +35,10 @@ export default function HowItWorks() {
     textAlign: 'center',
     fontSize: '18px',
     marginBottom: '60px',
-    color: 'rgba(255,255,255,0.85)',
+    background: 'linear-gradient(135deg, #0f4c81, #00a86b)',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+    backgroundClip: 'text',
     animation: 'fadeInUp 1.2s ease',
   }
 
@@ -48,9 +53,7 @@ export default function HowItWorks() {
 
   return (
     <section style={sectionStyle} id="how-it-works">
-      {/* White bubbles */}
       <div style={bubbleStyle} />
-
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         <h2 style={titleStyle}>How It Works</h2>
         <p style={subtitleStyle}>Simple, fast, and efficient</p>

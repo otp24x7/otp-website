@@ -8,14 +8,13 @@ export default function PartnerWithUs() {
     padding: '120px 0',
     position: 'relative',
     overflow: 'hidden',
-    background: 'linear-gradient(135deg, #0f4c81 0%, #00a86b 100%)',
+    background: 'white',
   }
 
   const bubbleStyle = {
     position: 'absolute',
     inset: 0,
-    background:
-      'radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px)',
+    background: 'radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px)',
     backgroundSize: '40px 40px',
     animation: 'moveGrid 30s linear infinite',
     zIndex: 0,
@@ -31,13 +30,19 @@ export default function PartnerWithUs() {
   const titleStyle = {
     fontSize: '48px',
     marginBottom: '20px',
-    color: '#ffffff',
     animation: 'fadeInUp 1s ease',
+    background: 'linear-gradient(135deg, #0f4c81, #00a86b)',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+    backgroundClip: 'text',
   }
 
   const subtitleStyle = {
     fontSize: '18px',
-    color: 'rgba(255,255,255,0.85)',
+    background: 'linear-gradient(135deg, #0f4c81, #00a86b)',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+    backgroundClip: 'text',
     maxWidth: '700px',
     margin: '0 auto',
     lineHeight: 1.7,
@@ -55,12 +60,11 @@ export default function PartnerWithUs() {
   const formStyle = {
     maxWidth: '650px',
     margin: '0 auto',
-    background: 'rgba(255,255,255,0.08)',
+    background: 'white',
     padding: '50px',
     borderRadius: '22px',
-    backdropFilter: 'blur(18px)',
-    WebkitBackdropFilter: 'blur(18px)',
-    border: '1px solid rgba(255,255,255,0.2)',
+    border: '1px solid rgba(15, 76, 129, 0.15)',
+    boxShadow: '0 10px 40px rgba(15, 76, 129, 0.08)',
     position: 'relative',
     zIndex: 1,
   }
@@ -70,9 +74,9 @@ export default function PartnerWithUs() {
     padding: '14px 16px',
     marginBottom: '18px',
     borderRadius: '12px',
-    border: '1px solid rgba(255,255,255,0.3)',
-    background: 'rgba(255,255,255,0.12)',
-    color: 'white',
+    border: '1px solid rgba(15, 76, 129, 0.3)',
+    background: 'white',
+    color: '#0f4c81',
     fontSize: '15px',
     outline: 'none',
   }
@@ -82,8 +86,8 @@ export default function PartnerWithUs() {
     padding: '16px',
     borderRadius: '14px',
     border: 'none',
-    background: 'white',
-    color: '#0f4c81',
+    background: 'linear-gradient(135deg, #0f4c81, #00a86b)',
+    color: 'white',
     fontSize: '16px',
     fontWeight: 'bold',
     cursor: 'pointer',
@@ -91,7 +95,7 @@ export default function PartnerWithUs() {
   }
 
   const errorStyle = {
-    color: '#ffd1d1',
+    color: '#e53e3e',
     fontSize: '13px',
     marginTop: '-12px',
     marginBottom: '12px',
@@ -154,14 +158,11 @@ export default function PartnerWithUs() {
         template_params: formData,
       }
 
-      const response = await fetch(
-        'https://api.emailjs.com/api/v1.0/email/send',
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data),
-        }
-      )
+      const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
 
       if (response.ok) {
         setMessage('Request submitted successfully! We will contact you soon.')
@@ -214,13 +215,11 @@ export default function PartnerWithUs() {
           </button>
 
           {message && (
-            <p
-              style={{
-                textAlign: 'center',
-                marginTop: '14px',
-                color: message.includes('success') ? '#b9ffe8' : '#ffd1d1',
-              }}
-            >
+            <p style={{
+              textAlign: 'center',
+              marginTop: '14px',
+              color: message.includes('success') ? '#00a86b' : '#e53e3e',
+            }}>
               {message}
             </p>
           )}
@@ -230,20 +229,20 @@ export default function PartnerWithUs() {
       <style jsx>{`
         .partner-btn:hover {
           transform: translateY(-3px);
-          box-shadow: 0 12px 40px rgba(255, 255, 255, 0.4);
+          box-shadow: 0 12px 40px rgba(15, 76, 129, 0.3);
         }
 
         input::placeholder {
-          color: rgba(255, 255, 255, 0.7);
+          color: #00a86b;
+        }
+
+        input:focus {
+          border-color: #00a86b;
         }
 
         @keyframes moveGrid {
-          from {
-            transform: translate(0, 0);
-          }
-          to {
-            transform: translate(-40px, -40px);
-          }
+          from { transform: translate(0, 0); }
+          to { transform: translate(-40px, -40px); }
         }
       `}</style>
     </section>

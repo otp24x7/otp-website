@@ -172,7 +172,7 @@ export default function Hero() {
 
               {/* LOGO */}
               <img
-                src="/logo.jpeg"
+                src="/otp.svg"
                 alt="OTP 24x7"
                 style={logoStyle}
               />

@@ -5,8 +5,6 @@ import Image from 'next/image'
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
-  const [logoRotate, setLogoRotate] = useState(false)
-  const baseLogoScale = 1.6
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,7 +17,7 @@ export default function Header() {
   const navItems = ['Home', 'Features', 'How It Works', 'Tests', 'Partner With Us']
 
   const headerStyle = {
-    background: 'rgba(255, 255, 255, 0.95)',
+    background: 'rgba(255, 255, 255, 1)',
     backdropFilter: 'blur(20px)',
     WebkitBackdropFilter: 'blur(20px)',
     padding: '15px 0',
@@ -42,22 +40,16 @@ export default function Header() {
     alignItems: 'center',
     gap: '12px',
     fontSize: '28px',
-    width: '60px',
-    minWidth: '60px',
+    width: 'auto',
+    minWidth: 'auto',
     overflow: 'visible',
-    fontWeight: 'bold',
-    animation: 'slideInLeft 0.8s ease-out'
+    fontWeight: 'bold'
   }
 
   const logoStyle = {
     height: '60px',
     width: 'auto',
-    filter: 'drop-shadow(0 4px 8px rgba(0, 168, 107, 0.3))',
-    transition: 'transform 0.7s ease',
-    cursor: 'pointer',
-    transform: logoRotate
-      ? `rotate(360deg) scale(${baseLogoScale * 1.05})`
-      : `rotate(0deg) scale(${baseLogoScale})`
+    cursor: 'pointer'
   }
 
   const navLinksStyle = {
@@ -93,14 +85,12 @@ export default function Header() {
         <nav className="container" style={navStyle}>
           <div style={logoContainerStyle} className="logo-container">
             <Image
-              src="/otp_1.png"
+              src="/otp.svg"
               alt="OTP Logo"
               width={60}
               height={60}
               className="logo-img"
               style={logoStyle}
-              onMouseEnter={() => setLogoRotate(true)}
-              onMouseLeave={() => setLogoRotate(false)}
               priority
             />
 
@@ -163,13 +153,9 @@ export default function Header() {
           .nav-links {
             display: none;
           }
-          /* keep logo from scaling too large on small screens */
-          .logo-img {
-            transform: none !important;
-          }
-          .logo-container {
-            width: 48px !important;
-            min-width: 48px !important;
+          /* hide the text lines on very small viewports so the svg has room */
+          .logo-container > div {
+            display: none;
           }
         }
         .logo-container {
